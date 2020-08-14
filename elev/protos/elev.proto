@@ -6,7 +6,7 @@ service elev {
   rpc GetByName (ElevNameRequest) returns (ElevReponse) {}
   rpc GetByUUID (ElevUUIDRequest) returns (ElevReponse) {}
   rpc GetAll (ElevAllRequest) returns (stream ElevReponse) {}
-  rpc RemoveElev (ElevUUIDRequest) returns (ConfirmationReponse) {}
+  rpc RemoveElev (stream levUUIDRequest) returns (ConfirmationReponse) {}
 }
 
 package elev;
@@ -37,7 +37,6 @@ message ConfirmationReponse {
   bool success = 1;
 }
 
-// Reponses
 message ElevReponse {
   string uuid = 1;
   string name = 2;
