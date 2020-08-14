@@ -1,0 +1,54 @@
+syntax = "proto3";
+package elev;
+
+service elev {
+  rpc AddElev (ElevRequest) returns (ConfirmationReponse) {}
+  rpc GetByName (ElevNameRequest) returns (ElevReponse) {}
+  rpc GetByUUID (ElevUUIDRequest) returns (ElevReponse) {}
+  rpc GetAll (ElevAllRequest) returns (stream ElevReponse) {}
+  rpc RemoveElev (ElevUUIDRequest) returns (ConfirmationReponse) {}
+}
+
+package elev;
+
+//    objects
+message ElevRequest {
+  string uuid = 1;
+  string name = 2;
+  string identifiesAs = 3;
+  timestamp dateofbirth = 4;
+  repeated Parent Parents = 5;
+}
+
+message ElevNameRequest {
+  string name = 1;
+}
+
+message ElevUUIDRequest {
+  string UUID = 1;
+}
+
+message ElevAllRequest { 
+  //Empty for now but need an object for future params till ex 
+}
+
+// Reponses
+message ConfirmationReponse {
+  bool success = 1;
+}
+
+// Reponses
+message ElevReponse {
+  string uuid = 1;
+  string name = 2;
+  timestamp dateofbirth = 3;
+  repeated Parent Parents = 4;
+}
+
+// Nested objects 
+message Parent {
+  string name = 1;
+  string address = 2;
+  string address = 3;
+  string postcode = 4;
+}
