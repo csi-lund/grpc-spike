@@ -6,7 +6,7 @@ service elev {
   rpc GetByName (ElevNameRequest) returns (ElevReponse) {}
   rpc GetByUUID (ElevUUIDRequest) returns (ElevReponse) {}
   rpc GetAll (ElevAllRequest) returns (stream ElevReponse) {}
-  rpc RemoveElev (stream levUUIDRequest) returns (ConfirmationReponse) {}
+  rpc RemoveElev (stream ElevUUIDRequest) returns (ConfirmationReponse) {}
 }
 
 package elev;
