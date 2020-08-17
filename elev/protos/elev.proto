@@ -1,7 +1,8 @@
 syntax = "proto3";
+
 package elev;
 
-service elev {
+service elevManager {
   rpc AddElev (ElevRequest) returns (ConfirmationReponse) {}
   rpc GetByName (ElevNameRequest) returns (ElevReponse) {}
   rpc GetByUUID (ElevUUIDRequest) returns (ElevReponse) {}
@@ -9,14 +10,12 @@ service elev {
   rpc RemoveElev (stream ElevUUIDRequest) returns (ConfirmationReponse) {}
 }
 
-package elev;
-
-//    objects
+// objects
 message ElevRequest {
   string uuid = 1;
   string name = 2;
   string identifiesAs = 3;
-  timestamp dateofbirth = 4;
+  Date dateofbirth = 4;
   repeated Parent Parents = 5;
 }
 
@@ -40,7 +39,7 @@ message ConfirmationReponse {
 message ElevReponse {
   string uuid = 1;
   string name = 2;
-  timestamp dateofbirth = 3;
+  Date dateofbirth = 3;
   repeated Parent Parents = 4;
 }
 
@@ -48,6 +47,6 @@ message ElevReponse {
 message Parent {
   string name = 1;
   string address = 2;
-  string address = 3;
+  string town = 3;
   string postcode = 4;
 }
