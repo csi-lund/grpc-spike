@@ -1,4 +1,5 @@
 syntax = "proto3";
+import "google/protobuf/timestamp.proto";
 
 package student;
 
@@ -15,7 +16,7 @@ message StudentRequest {
   string uuid = 1;
   string name = 2;
   string identifiesAs = 3;
-  Date dateofbirth = 4;
+  google.protobuf.Timestamp dateofbirth = 4;
   repeated Parent Parents = 5;
 }
 
@@ -39,7 +40,7 @@ message ConfirmationReponse {
 message StudentReponse {
   string uuid = 1;
   string name = 2;
-  Date dateofbirth = 3;
+  google.protobuf.Timestamp dateofbirth = 3;
   repeated Parent Parents = 4;
 }
 

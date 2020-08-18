@@ -9,7 +9,7 @@ var packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   defaults: true,
   oneofs: true,
 });
-var elev_proto = grpc.loadPackageDefinition(packageDefinition).student;
+var student_proto = grpc.loadPackageDefinition(packageDefinition).student;
 
 function AddStudent(call, callback) {
   callback(null, createStudent(call.request));
