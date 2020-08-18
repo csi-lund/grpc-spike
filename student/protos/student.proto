@@ -1,17 +1,17 @@
 syntax = "proto3";
 
-package elev;
+package student;
 
-service elevManager {
-  rpc AddElev (ElevRequest) returns (ConfirmationReponse) {}
-  rpc GetByName (ElevNameRequest) returns (ElevReponse) {}
-  rpc GetByUUID (ElevUUIDRequest) returns (ElevReponse) {}
-  rpc GetAll (ElevAllRequest) returns (stream ElevReponse) {}
-  rpc RemoveElev (stream ElevUUIDRequest) returns (ConfirmationReponse) {}
+service studentManager {
+  rpc AddStudent (StudentRequest) returns (ConfirmationReponse) {}
+  rpc GetByName (StudentNameRequest) returns (StudentReponse) {}
+  rpc GetByUUID (StudentUUIDRequest) returns (StudentReponse) {}
+  rpc GetAll (StudentAllRequest) returns (stream StudentReponse) {}
+  rpc RemoveStudent (stream StudentUUIDRequest) returns (ConfirmationReponse) {}
 }
 
 // objects
-message ElevRequest {
+message StudentRequest {
   string uuid = 1;
   string name = 2;
   string identifiesAs = 3;
@@ -19,15 +19,15 @@ message ElevRequest {
   repeated Parent Parents = 5;
 }
 
-message ElevNameRequest {
+message StudentNameRequest {
   string name = 1;
 }
 
-message ElevUUIDRequest {
+message StudentUUIDRequest {
   string UUID = 1;
 }
 
-message ElevAllRequest { 
+message StudentAllRequest { 
   //Empty for now but need an object for future params till ex 
 }
 
@@ -36,7 +36,7 @@ message ConfirmationReponse {
   bool success = 1;
 }
 
-message ElevReponse {
+message StudentReponse {
   string uuid = 1;
   string name = 2;
   Date dateofbirth = 3;
