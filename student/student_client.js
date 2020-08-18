@@ -1,4 +1,5 @@
-var PROTO_PATH = __dirname + '/protos/elev.proto';
+// A js client implementation of the protobuf for testing
+var PROTO_PATH = __dirname + '/protos/student.proto';
 var grpc = require('grpc');
 var async = require("async");
 
@@ -12,10 +13,10 @@ var packageDefinition = protoLoader.loadSync(
      oneofs: true
     });
 
-var elev_proto = grpc.loadPackageDefinition(packageDefinition).elev;
+var student_proto = grpc.loadPackageDefinition(packageDefinition).student;
 
 function main() {
-  var client = new elev_proto.elevManager(
+  var client = new student_proto.studentManager(
     "localhost:50051",
     grpc.credentials.createInsecure()
   );
