@@ -1,5 +1,5 @@
 // A js client implementation of the protobuf for testing
-var PROTO_PATH = __dirname + '/protos/student.proto';
+var PROTO_PATH = __dirname + '/../protos/student.proto';
 var grpc = require('grpc');
 var async = require("async");
 

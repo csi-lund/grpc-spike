@@ -1,8 +1,8 @@
 {
-  "name": "elev",
+  "name": "studen",
   "version": "1.0.0",
   "description": "",
-  "main": "elev_server.js",
+  "main": "student_server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,6 +11,7 @@
   "dependencies": {
     "@grpc/proto-loader": "^0.1.0",
     "async": "^1.5.2",
+    "dotenv": "^8.2.0",
     "google-protobuf": "^3.0.0",
     "grpc": "^1.11.0"
   }
