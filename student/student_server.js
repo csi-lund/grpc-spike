@@ -36,6 +36,10 @@ function RemoveStudent(call, callback) {
   callback(null, function () {});
 }
 
+function RemoveParent(call, callback) {
+  callback(null, function () {});
+}
+
 function main() {
   var server = new grpc.Server();
   // map proto methods to implementations
@@ -45,6 +49,7 @@ function main() {
     GetByUUID: GetByUUID,
     GetAll: GetAll,
     RemoveStudent: RemoveStudent,
+    RemoveParent: RemoveParent,
   });
   server.bind("0.0.0.0:50051", grpc.ServerCredentials.createInsecure());
   server.start();

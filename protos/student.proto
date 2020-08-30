@@ -9,6 +9,7 @@ service studentManager {
   rpc GetByUUID (StudentUUIDRequest) returns (StudentReponse) {}
   rpc GetAll (StudentAllRequest) returns (stream StudentReponse) {}
   rpc RemoveStudent (stream StudentUUIDRequest) returns (ConfirmationReponse) {}
+  rpc RemoveParent (ParentUUIDRequest) returns (ConfirmationReponse) {}
 }
 
 // objects
@@ -28,6 +29,10 @@ message StudentUUIDRequest {
   string UUID = 1;
 }
 
+message ParentUUIDRequest {
+  string UUID = 1;
+}
+
 message StudentAllRequest { 
   //Empty for now but need an object for future params till ex 
 }
@@ -40,14 +45,20 @@ message ConfirmationReponse {
 message StudentReponse {
   string uuid = 1;
   string name = 2;
-  google.protobuf.Timestamp dateofbirth = 3;
-  repeated Parent Parents = 4;
+  string socialsecuritynumber = 3;
+  google.protobuf.Timestamp dateofbirth = 4;
+  repeated Parent Parents = 5;
 }
 
 // Nested objects 
 message Parent {
-  string name = 1;
-  string address = 2;
-  string town = 3;
-  string postcode = 4;
+  string uuid = 1;
+  string name = 2;
+  string socialsecuritynumber = 3;
+  string identifiesAs = 4;
+  string addressline1 = 5;
+  string addressline2 = 6;
+  string city = 7;
+  string postnumber = 8;
+  string spouseUUID = 9;
 }
