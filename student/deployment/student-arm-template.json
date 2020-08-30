@@ -1,0 +1,38 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "student-rg",
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2019-10-01",
+            "location": "northeurope",
+            "dependsOn": [
+            ],
+            "tags": {
+            }
+        },
+        {
+            "name": "student-linux-plan",
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2018-02-01",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "F1",
+                "capacity": 1
+            },
+            "tags": {
+                "displayName": "student-linux-plan"
+            },
+            "properties": {
+                "name": "student-linux-plan"
+            },"dependsOn" : [
+                 "[resourceId('Microsoft.Resources/resourceGroups', 'student-rg')]"
+            ]
+        }
+    ],
+    "outputs": {}
+}
