@@ -1,6 +1,5 @@
 var PROTO_PATH = __dirname + "/../protos/student.proto";
 
-const config = require("./config");
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
 
