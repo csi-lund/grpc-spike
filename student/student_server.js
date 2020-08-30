@@ -2,6 +2,8 @@ var PROTO_PATH = __dirname + "/../protos/student.proto";
 
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
+const repository = require("src/data/repository.js");
+
 
 var packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
@@ -15,8 +17,8 @@ var student_proto = grpc.loadPackageDefinition(packageDefinition).student;
 // Server implementations
 function AddStudent(call, callback) {
   callback(null, function () {
-    var student = call.requst;
-    return { succes: true };
+    var student = call.request;
+    repository.InsertStudent(student);
   });
 }
 
