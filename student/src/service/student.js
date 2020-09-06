@@ -24,3 +24,12 @@ function AddStudentAndParents () {
 
     return savedStudent;
 }
+
+function GetAll(call) {
+  var students = repository.GetAll();
+  students.forEach(element => {
+     call.write(element);
+  });
+
+  call.end();
+}

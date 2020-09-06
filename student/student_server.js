@@ -24,7 +24,7 @@ function GetByUUID(call, callback) {
 }
 
 function GetAll(call, callback) {
-  callback(null, function () {});
+  callback(null, service.GetAll(call));
 }
 
 function Get(call, callback) {

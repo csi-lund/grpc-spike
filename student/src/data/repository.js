@@ -75,6 +75,21 @@ function LinkParentAndStudent(studentId, parentId) {
    connection.execSql(request);
 }
 
+function GetAll() {
+   request = new Request(
+     `SELECT * FROM Student`,
+
+     function (err, rowCount, rows) {
+       if (err) {
+         callback(err);
+       } else {
+         console.log(rowCount + " row(s) inserted");
+       }
+      }); 
+      
+      return connection.execSql(request);
+};
+
 // Attempt to connect and execute queries if connection goes through
 connection.on("connect", function (err) {
   if (err) {
