@@ -30,6 +30,50 @@ function InsertStudent(student) {
   return uuid;
 }
 
+function InsertParent(parent) {
+  request = new Request(
+    `INSERT INTO Parent (Name, SocialSecurityNumber IdentifiesAs, Addressline1, Addressline2, City, Postnumber)
+     OUTPUT INSERTED.Id VALUES (@name, @socialSecurityNumber, @identifiedAs, @addressline1, @addressline2, @city, @postnumber);`,
+
+    function (err, rowCount, rows) {
+      if (err) {
+        callback(err);
+      } else {
+        console.log(rowCount + " row(s) inserted");
+      }
+    }
+  );
+
+  request.addParameter("name", TYPES.NVarChar, parent.Name);
+  request.addParameter("socialSecurityNumber", TYPES.NVarChar,parent.socialSecurityNumber);
+  request.addParameter("identifiesAs", TYPES.NVarChar, parent.identifiesAs);
+  request.addParameter("addressline1", TYPES.NVarChar, parent.addressline1);
+  request.addParameter("addressline2", TYPES.NVarChar, parent.addressline2);
+  request.addParameter("city", TYPES.NVarChar, parent.city);
+  request.addParameter("postnumber", TYPES.NVarChar, parent.postnumber);
+
+  // Execute SQL statement
+  var uuid = connection.execSql(request);
+  return uuid;
+}
+
+function LinkParentAndStudent(studentId, parentId) {
+   request = new Request(
+     `INSERT INTO StudentParent (StudentId, ParentId) VALUES (@studentId, @parentId);`,
+
+     function (err, rowCount, rows) {
+       if (err) {
+         callback(err);
+       } else {
+         console.log(rowCount + " row(s) inserted");
+       }
+     }
+   );
+
+   request.addParameter("StudentId", TYPES.UniqueIdentifier, studentId);
+   request.addParameter("ParentId", TYPES.UniqueIdentifier, parentId);
+   connection.execSql(request);
+}
 
 // Attempt to connect and execute queries if connection goes through
 connection.on("connect", function (err) {

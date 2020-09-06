@@ -5,11 +5,9 @@ package student;
 
 service studentManager {
   rpc AddStudent (AddStudentRequest) returns (StudentAddReponse) {}
-  rpc GetByName (StudentNameRequest) returns (StudentReponse) {}
   rpc GetByUUID (StudentUUIDRequest) returns (StudentReponse) {}
   rpc GetAll (StudentAllRequest) returns (stream StudentReponse) {}
-  rpc RemoveStudent (stream StudentUUIDRequest) returns (ConfirmationReponse) {}
-  rpc RemoveParent (ParentUUIDRequest) returns (ConfirmationReponse) {}
+  rpc Get (stream StudentUUIDRequest) returns (stream StudentReponse) {}
 }
 
 // objects
@@ -21,15 +19,7 @@ message AddStudentRequest {
   repeated Parent parents = 5;
 }
 
-message StudentNameRequest {
-  string name = 1;
-}
-
 message StudentUUIDRequest {
-  string UUID = 1;
-}
-
-message ParentUUIDRequest {
   string UUID = 1;
 }
 
@@ -68,5 +58,4 @@ message Parent {
   string addressline2 = 6;
   string city = 7;
   string postnumber = 8;
-  string spouseUUID = 9;
 }

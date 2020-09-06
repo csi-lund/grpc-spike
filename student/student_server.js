@@ -15,12 +15,7 @@ var student_proto = grpc.loadPackageDefinition(packageDefinition).student;
 
 // Server implementations
 function AddStudent(call, callback) {
-  callback(null, function(){});
-}
-
-function GetByName(call, callback) {
-  callback(null, function() { 
-  });
+  callback(null, service.AddStudentAndParents(call));
 }
 
 function GetByUUID(call, callback) {
@@ -32,11 +27,7 @@ function GetAll(call, callback) {
   callback(null, function () {});
 }
 
-function RemoveStudent(call, callback) {
-  callback(null, function () {});
-}
-
-function RemoveParent(call, callback) {
+function Get(call, callback) {
   callback(null, function () {});
 }
 
@@ -45,11 +36,9 @@ function main() {
   // map proto methods to implementations
   server.addService(student_proto.studentManager.service, {
     AddStudent: AddStudent,
-    GetByName: GetByName,
     GetByUUID: GetByUUID,
     GetAll: GetAll,
-    RemoveStudent: RemoveStudent,
-    RemoveParent: RemoveParent,
+    Get: Get,
   });
   server.bind("0.0.0.0:50051", grpc.ServerCredentials.createInsecure());
   server.start();

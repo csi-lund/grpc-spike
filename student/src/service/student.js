@@ -16,8 +16,10 @@ function AddStudentAndParents () {
     };
 
     parents.forEach((parent) => {
-      var id = repository.InsertParent(parent);
-      savedStudent.parentIds.push(id);
+      var parentId = repository.InsertParent(parent);
+      savedStudent.parentIds.push(parentId);
+
+      repository.LinkParentAndStudent(studentId, parentId);
     });  
 
     return savedStudent;
