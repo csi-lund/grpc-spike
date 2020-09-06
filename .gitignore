@@ -1,5 +1,5 @@
 # dependencies
 student/node_modules/
 .env
-/obj
-/bin
+**/obj
+**/bin
