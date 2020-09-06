@@ -4,7 +4,7 @@ import "google/protobuf/timestamp.proto";
 package student;
 
 service studentManager {
-  rpc AddStudent (StudentRequest) returns (ConfirmationReponse) {}
+  rpc AddStudent (AddStudentRequest) returns (StudentAddReponse) {}
   rpc GetByName (StudentNameRequest) returns (StudentReponse) {}
   rpc GetByUUID (StudentUUIDRequest) returns (StudentReponse) {}
   rpc GetAll (StudentAllRequest) returns (stream StudentReponse) {}
@@ -13,12 +13,12 @@ service studentManager {
 }
 
 // objects
-message StudentRequest {
-  string uuid = 1;
-  string name = 2;
-  string identifiesAs = 3;
-  google.protobuf.Timestamp dateofbirth = 4;
-  repeated Parent Parents = 5;
+message AddStudentRequest {
+  string name = 1;
+  string identifiesAs = 2;
+  string socialSecurityNumber = 3;
+  google.protobuf.Timestamp dateOfBirth = 4;
+  repeated Parent parents = 5;
 }
 
 message StudentNameRequest {
@@ -40,6 +40,14 @@ message StudentAllRequest {
 // Reponses
 message ConfirmationReponse {
   bool success = 1;
+}
+
+message StudentAddReponse {
+  string uuid = 1;
+  string name = 2;
+  string socialSecurityNumber = 3;
+  google.protobuf.Timestamp dateofBirth = 4;
+  repeated string parentIds = 5;
 }
 
 message StudentReponse {

@@ -2,8 +2,7 @@ var PROTO_PATH = __dirname + "/../protos/student.proto";
 
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
-const repository = require("src/data/repository.js");
-
+const service = require("src/service/studentService.js");
 
 var packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
@@ -16,18 +15,17 @@ var student_proto = grpc.loadPackageDefinition(packageDefinition).student;
 
 // Server implementations
 function AddStudent(call, callback) {
-  callback(null, function () {
-    var student = call.request;
-    repository.InsertStudent(student);
-  });
+  callback(null, function(){});
 }
 
 function GetByName(call, callback) {
-  callback(null, function() { });
+  callback(null, function() { 
+  });
 }
 
 function GetByUUID(call, callback) {
-  callback(null, function () {});
+  callback(null, function () {
+  });
 }
 
 function GetAll(call, callback) {

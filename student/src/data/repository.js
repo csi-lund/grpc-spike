@@ -23,11 +23,11 @@ function InsertStudent(student) {
   request.addParameter("Name", TYPES.NVarChar, student.Name);
   request.addParameter("identifiesAs", TYPES.NVarChar, student.IdentifiesAs);
   request.addParameter("DOB", TYPES.Date, student.DOB);
-  request.addParameter("socialSecurityNumber", TYPES.NVarChar, student.SocialSecurityNumber
-  );
+  request.addParameter("socialSecurityNumber", TYPES.NVarChar, student.SocialSecurityNumber);
 
   // Execute SQL statement
-  connection.execSql(request);
+  var uuid = connection.execSql(request);
+  return uuid;
 }
 
 
