@@ -1,4 +1,4 @@
-const repository = require("../src/data/repository.js");
+const repository = require("../data/repository.js");
 
 function AddStudentAndParents () {
     var student = call.request;
@@ -7,12 +7,12 @@ function AddStudentAndParents () {
     // script validation
     var studentId = repository.InsertStudent(student);
     var savedStudent = {
-      uuid = studentId,
-      name = student.name,
-      identifiesAs = student.identifiesAs,
-      socialSecurityNumber = student.socialSecurityNumber,
-      dateofbirth = student.dateOfBirth,
-      parentIds = []
+      uuid: studentId,
+      name: student.name,
+      identifiesAs: student.identifiesAs,
+      socialSecurityNumber: student.socialSecurityNumber,
+      dateofbirth: student.dateOfBirth,
+      parentIds: []
     };
 
     parents.forEach((parent) => {

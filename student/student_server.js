@@ -2,7 +2,7 @@ var PROTO_PATH = __dirname + "/../protos/student.proto";
 
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
-const service = require("src/service/studentService.js");
+const service = require("./src/service/student.js");
 
 var packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
