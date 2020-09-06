@@ -6,7 +6,7 @@ package student;
 service studentManager {
   rpc AddStudent (AddStudentRequest) returns (StudentAddReponse) {}
   rpc GetByUUID (StudentUUIDRequest) returns (StudentReponse) {}
-  rpc GetAll (StudentAllRequest) returns (stream StudentReponse) {}
+  rpc GetAll (StudentAllRequest) returns (stream StudentAllReponse) {}
   rpc Get (stream StudentUUIDRequest) returns (stream StudentReponse) {}
 }
 
@@ -38,6 +38,12 @@ message StudentAddReponse {
   string socialSecurityNumber = 3;
   google.protobuf.Timestamp dateofBirth = 4;
   repeated string parentIds = 5;
+}
+
+message StudentAllReponse {
+  string uuid = 1;
+  string name = 2;
+  string socialsecuritynumber = 3;
 }
 
 message StudentReponse {
