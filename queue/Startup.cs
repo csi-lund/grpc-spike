@@ -31,7 +31,6 @@ namespace queue
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<GreeterService>();
 
                 endpoints.MapGet("/", async context =>
                 {
