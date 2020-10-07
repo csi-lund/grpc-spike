@@ -1,1 +1,24 @@
 syntax = "proto3";
+
+package queue;
+
+service queueManager {
+  rpc GetStudentPosition (StudentQueueRequest) returns (StudentPositionResponse) {}
+  rpc GetQueue (QueueAllRequest) returns (stream StudentPositionResponse) {}
+  rpc AddStudentToQueue (StudentQueueRequest) returns (StudentPositionResponse) {}
+}
+
+/*Request Objects*/
+message StudentQueueRequest {
+  string UUID = 1;
+}
+
+message QueueAllRequest { 
+  //Empty for now but need an object for future params till ex 
+}
+
+/*Response Objects*/
+message StudentPositionResponse {
+  string UUID = 1;
+  uint32 queuePosition = 2;
+}
